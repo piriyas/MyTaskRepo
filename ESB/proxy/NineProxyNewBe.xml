@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="NineProxyNewBe"
+       transports="http https"
+       startOnLoad="true">
+   <description/>
+   <target>
+      <inSequence>
+         <property name="OUT_ONLY" value="true" scope="default" type="STRING"/>
+         <log>
+            <property name="InSequence" value="Inside the Insequence"/>
+         </log>
+         <header name="Authorization"
+                 scope="transport"
+                 value="Basic cGlyaXlhOnBpcml5YTEyMw=="/>
+         <filter source="get-property('HTTP_METHOD_NEW')" regex="GET">
+            <then>
+               <payloadFactory media-type="xml">
+                  <format>
+                     <ser:readNinewells xmlns:ser="http://service.sample.ninewells.com">
+                        <ser:patientId>$1</ser:patientId>
+                     </ser:readNinewells>
+                  </format>
+                  <args>
+                     <arg value="1012"/>
+                  </args>
+               </payloadFactory>
+               <property name="SOAPAction"
+                         value="urn:readNinewells"
+                         scope="transport"
+                         type="STRING"/>
+               <header name="Action" scope="default" value="urn:readNinewells"/>
+               <property name="messageType"
+                         value="application/soap+xml"
+                         scope="axis2"
+                         type="STRING"/>
+            </then>
+            <else>
+               <filter source="get-property('HTTP_METHOD_NEW')" regex="DELETE">
+                  <then>
+                     <payloadFactory media-type="xml">
+                        <format>
+                           <ser:deleteNinewells xmlns:ser="http://service.sample.ninewells.com">
+                              <ser:patientId>1009</ser:patientId>
+                           </ser:deleteNinewells>
+                        </format>
+                        <args>
+                           <arg value="1009"/>
+                        </args>
+                     </payloadFactory>
+                     <header name="Action" scope="default" value="urn:deleteNinewells"/>
+                     <property name="SOAPAction"
+                               value="urn:deleteNinewells"
+                               scope="transport"
+                               type="STRING"/>
+                     <property name="messageType"
+                               value="application/soap+xml"
+                               scope="axis2"
+                               type="STRING"/>
+                  </then>
+               </filter>
+            </else>
+         </filter>
+         <send>
+            <endpoint>
+               <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                        format="soap11"/>
+            </endpoint>
+         </send>
+      </inSequence>
+      <outSequence>
+         <log>
+            <property name="OutSequence" value="Inside the Outsequence"/>
+         </log>
+         <property name="messageType"
+                   value="application/json"
+                   scope="axis2"
+                   type="STRING"/>
+         <send/>
+      </outSequence>
+   </target>
+   <publishWSDL uri="http://192.168.55.160:9763/services/NinewellsPatientService?wsdl"/>
+</proxy>

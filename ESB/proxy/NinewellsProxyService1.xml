@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="NinewellsProxyService1"
+       transports="http https"
+       startOnLoad="true">
+   <description/>
+   <target>
+      <inSequence>
+         <header name="Authorization"
+                 scope="transport"
+                 value="Basic cGlyaXlhOnBpcml5YTEyMw=="/>
+         <payloadFactory media-type="xml">
+            <format>
+               <ser:readNinewells xmlns:ser="http://service.sample.ninewells.com">
+                  <ser:patientId>$1</ser:patientId>
+               </ser:readNinewells>
+            </format>
+            <args>
+               <arg value="1111"/>
+            </args>
+         </payloadFactory>
+         <send>
+            <endpoint>
+               <address uri="https://192.168.55.160:9443/services/NinewellsPatientService.NinewellsPatientServiceHttpsSoap11Endpoint"/>
+            </endpoint>
+         </send>
+         <property name="messageType"
+                   value="application/soap+xml"
+                   scope="axis2"
+                   type="STRING"/>
+      </inSequence>
+      <outSequence>
+         <property name="messageType"
+                   value="application/json"
+                   scope="axis2"
+                   type="STRING"/>
+         <send/>
+      </outSequence>
+   </target>
+   <publishWSDL uri="http://192.168.55.160:9763/services/NinewellsPatientService?wsdl"/>
+</proxy>

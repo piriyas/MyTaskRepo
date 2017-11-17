@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse"
+     name="NinewellsPatientMgtAPI"
+     context="/ninewellspatientmgtapi">
+   <resource methods="POST" url-mapping="/*">
+      <inSequence>
+         <log>
+            <property name="InSequence" value="Inside the Insequence"/>
+         </log>
+         <property name="Authorization"
+                   value="Basic cGlyaXlhOnBpcml5YTEyMw=="
+                   scope="transport"/>
+         <property name="foo" expression="get-property('query.param.patientFullName')"/>
+         <property name="bar" expression="get-property('query.param.patientId')"/>
+         <payloadFactory media-type="xml">
+            <format>
+               <ser:postNinewells xmlns:ser="http://service.sample.ninewells.com"><!--Optional:--><ser:patient><!--Optional:--><xsd:insurer xmlns:xsd="http://dto.service.sample.ninewells.com/xsd"><!--Optional:--><xsd:insurerEmail>?</xsd:insurerEmail>
+                        <!--Optional:--><xsd:insurerName>?</xsd:insurerName>
+                        <!--Optional:--><xsd:insurerPhone>?</xsd:insurerPhone>
+                     </xsd:insurer>
+                     <!--Optional:--><xsd:medical xmlns:xsd="http://dto.service.sample.ninewells.com/xsd"><!--Optional:--><xsd:condition>?</xsd:condition>
+                        <!--Optional:--><xsd:treatment>?</xsd:treatment>
+                     </xsd:medical>
+                     <!--Optional:--><xsd:parentGuardian xmlns:xsd="http://dto.service.sample.ninewells.com/xsd"><!--Optional:--><xsd:guardianEmail>?</xsd:guardianEmail>
+                        <!--Optional:--><xsd:guardianName>?</xsd:guardianName>
+                        <!--Optional:--><xsd:guardianPhone>?</xsd:guardianPhone>
+                     </xsd:parentGuardian>
+                     <!--Optional:--><xsd:patientContact xmlns:xsd="http://dto.service.sample.ninewells.com/xsd"><!--Optional:--><xsd:address>?</xsd:address>
+                        <!--Optional:--><xsd:email>?</xsd:email>
+                        <!--Optional:--><xsd:phone>?</xsd:phone>
+                     </xsd:patientContact>
+                     <!--Optional:--><xsd:patientFullName xmlns:xsd="http://dto.service.sample.ninewells.com/xsd">$1</xsd:patientFullName>
+                     <!--Optional:--><xsd:patientId xmlns:xsd="http://dto.service.sample.ninewells.com/xsd">$2</xsd:patientId>
+                     <!--Optional:--><xsd:physician xmlns:xsd="http://dto.service.sample.ninewells.com/xsd"><!--Optional:--><xsd:physicianEmail>?</xsd:physicianEmail>
+                        <!--Optional:--><xsd:physicianName>?</xsd:physicianName>
+                        <!--Optional:--><xsd:physicianPhone>?</xsd:physicianPhone>
+                     </xsd:physician>
+                  </ser:patient>
+               </ser:postNinewells>
+            </format>
+            <args>
+               <arg evaluator="xml" expression="//patientFullName"/>
+               <arg evaluator="xml" expression="//patientId"/>
+            </args>
+         </payloadFactory>
+         <property name="SOAPAction"
+                   value="urn:postNinewells"
+                   scope="transport"
+                   type="STRING"/>
+         <header name="Action" scope="default" value="urn:postNinewells"/>
+         <property name="messageType"
+                   value="application/soap+xml"
+                   scope="axis2"
+                   type="STRING"/>
+         <send>
+            <endpoint>
+               <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                        format="soap11"/>
+            </endpoint>
+         </send>
+      </inSequence>
+      <outSequence>
+         <log>
+            <property name="OutSequence" value="Inside the Outsequence"/>
+         </log>
+         <send/>
+         <property name="messageType"
+                   value="application/json"
+                   scope="axis2"
+                   type="STRING"/>
+      </outSequence>
+   </resource>
+   <resource methods="GET" uri-template="/{patientId}">
+      <inSequence>
+         <log>
+            <property name="InSequence" value="Inside the Insequence"/>
+         </log>
+         <property name="Authorization"
+                   value="Basic cGlyaXlhOnBpcml5YTEyMw=="
+                   scope="transport"/>
+         <log>
+            <property name="Symbol" expression="get-property('uri.var.patientId')"/>
+         </log>
+         <payloadFactory media-type="xml">
+            <format>
+               <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                 xmlns:ser="http://service.sample.ninewells.com">
+                  <soapenv:Header>
+                     <abc>2611</abc>
+                  </soapenv:Header>
+                  <soapenv:Body>
+                     <ser:readNinewells><!--Optional:--><ser:patientId>$1</ser:patientId>
+                     </ser:readNinewells>
+                  </soapenv:Body>
+               </soapenv:Envelope>
+            </format>
+            <args>
+               <arg evaluator="xml" expression="get-property('uri.var.patientId')"/>
+            </args>
+         </payloadFactory>
+         <property name="SOAPAction"
+                   value="urn:readNinewells"
+                   scope="transport"
+                   type="STRING"/>
+         <header name="Action" scope="default" value="urn:readNinewells"/>
+         <send>
+            <endpoint>
+               <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                        format="soap11"/>
+            </endpoint>
+         </send>
+         <property name="messageType"
+                   value="application/soap+xml"
+                   scope="axis2"
+                   type="STRING"/>
+      </inSequence>
+      <outSequence>
+         <log>
+            <property name="OutSequence" value="Inside the Outsequence"/>
+         </log>
+         <property name="messageType"
+                   value="application/json"
+                   scope="axis2"
+                   type="STRING"/>
+         <send/>
+      </outSequence>
+   </resource>
+   <resource methods="DELETE" uri-template="/{patientId}">
+      <inSequence>
+         <log>
+            <property name="InSequence" value="Inside the Insequence"/>
+         </log>
+         <header name="Authorization"
+                 scope="transport"
+                 value="Basic cGlyaXlhOnBpcml5YTEyMw=="/>
+         <log>
+            <property name="Symbol" expression="get-property('uri.var.patientId')"/>
+         </log>
+         <payloadFactory media-type="xml">
+            <format>
+               <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                 xmlns:ser="http://service.sample.ninewells.com">
+                  <soapenv:Header>
+                     <abc>2611</abc>
+                  </soapenv:Header>
+                  <soapenv:Body>
+                     <ser:deleteNinewells><!--Optional:--><ser:patientId>$1</ser:patientId>
+                     </ser:deleteNinewells>
+                  </soapenv:Body>
+               </soapenv:Envelope>
+            </format>
+            <args>
+               <arg evaluator="xml" expression="get-property('uri.var.patientId')"/>
+            </args>
+         </payloadFactory>
+         <header name="Action" scope="default" value="urn:deleteNinewells"/>
+         <property name="SOAPAction"
+                   value="urn:deleteNinewells"
+                   scope="transport"
+                   type="STRING"/>
+         <property name="messageType"
+                   value="application/soap+xml"
+                   scope="axis2"
+                   type="STRING"/>
+         <send>
+            <endpoint>
+               <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                        format="soap11"/>
+            </endpoint>
+         </send>
+      </inSequence>
+      <outSequence>
+         <log>
+            <property name="OutSequence" value="Inside the Outsequence"/>
+         </log>
+         <property name="messageType"
+                   value="application/json"
+                   scope="axis2"
+                   type="STRING"/>
+         <send/>
+      </outSequence>
+   </resource>
+</api>

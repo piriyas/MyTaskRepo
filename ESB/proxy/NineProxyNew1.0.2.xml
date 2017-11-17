@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="NineProxyNew1.0.2"
+       transports="http https"
+       startOnLoad="true">
+   <description/>
+   <target>
+      <inSequence>
+         <log>
+            <property name="InSequence" value="Inside the Insequence"/>
+         </log>
+         <header name="Authorization"
+                 scope="transport"
+                 value="Basic cGlyaXlhOnBpcml5YTEyMw=="/>
+         <log>
+            <property name="Symbol" expression="get-property('uri.var.patientId')"/>
+         </log>
+         <payloadFactory media-type="xml">
+            <format>
+               <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                 xmlns:ser="http://service.sample.ninewells.com">
+                  <soapenv:Header>
+                     <abc>2611</abc>
+                  </soapenv:Header>
+                  <soapenv:Body>
+                     <ser:readNinewells>
+                        <ser:patientId>$1</ser:patientId>
+                     </ser:readNinewells>
+                  </soapenv:Body>
+               </soapenv:Envelope>
+            </format>
+            <args>
+               <arg evaluator="xml" expression="get-property('uri.var.patientId')"/>
+            </args>
+         </payloadFactory>
+         <property name="SOAPAction"
+                   value="urn:readNinewells"
+                   scope="transport"
+                   type="STRING"/>
+         <header name="Action" scope="default" value="urn:readNinewells"/>
+         <property name="messageType"
+                   value="application/soap+xml"
+                   scope="axis2"
+                   type="STRING"/>
+         <send>
+            <endpoint>
+               <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                        format="soap11"/>
+            </endpoint>
+         </send>
+      </inSequence>
+      <outSequence>
+         <log>
+            <property name="OutSequence" value="Inside the Outsequence"/>
+         </log>
+         <property name="messageType"
+                   value="application/json"
+                   scope="axis2"
+                   type="STRING"/>
+         <send/>
+      </outSequence>
+   </target>
+   <publishWSDL uri="http://192.168.55.160:9763/services/NinewellsPatientService?wsdl"/>
+</proxy>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="newproxy1.2Update1.2"
+       transports="http https"
+       startOnLoad="true">
+   <description/>
+   <target>
+      <inSequence>
+         <header name="Authorization"
+                 scope="transport"
+                 value="Basic cGlyaXlhOnBpcml5YTEyMw=="/>
+         <log>
+            <property name="httpmethod === " expression="$axis2:HTTP_METHOD"/>
+         </log>
+         <switch source="$axis2:HTTP_METHOD">
+            <case regex="^(.*(GET)).*$">
+               <payloadFactory media-type="xml">
+                  <format>
+                     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                       xmlns:ser="http://service.sample.ninewells.com">
+                        <soapenv:Header>
+                           <abc>2611</abc>
+                        </soapenv:Header>
+                        <soapenv:Body>
+                           <ser:readNinewells>
+                              <ser:patientId>1099</ser:patientId>
+                           </ser:readNinewells>
+                        </soapenv:Body>
+                     </soapenv:Envelope>
+                  </format>
+                  <args>
+                     <arg value="300"/>
+                  </args>
+               </payloadFactory>
+               <log>
+                  <property name="iiiiiiiiiii" value="vvvvvvvvvvvvvvv"/>
+               </log>
+               <property name="SOAPAction"
+                         value="urn:readNinewells"
+                         scope="transport"
+                         type="STRING"/>
+               <header name="Action" scope="default" value="urn:readNinewells"/>
+               <property name="messageType"
+                         value="application/soap+xml"
+                         scope="axis2"
+                         type="STRING"/>
+               <log>
+                  <property name="mmmmmmmmmmmmmm" value="out the sequence"/>
+               </log>
+               <send>
+                  <endpoint>
+                     <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                              format="soap11"/>
+                  </endpoint>
+               </send>
+            </case>
+            <case regex="^(.*(DELETE)).*$">
+               <payloadFactory media-type="xml">
+                  <format>
+                     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                       xmlns:ser="http://service.sample.ninewells.com">
+                        <soapenv:Header>
+                           <abc>2611</abc>
+                        </soapenv:Header>
+                        <soapenv:Body>
+                           <ser:deleteNinewells>
+                              <ser:patientId>1099</ser:patientId>
+                           </ser:deleteNinewells>
+                        </soapenv:Body>
+                     </soapenv:Envelope>
+                  </format>
+                  <args>
+                     <arg value="40221"/>
+                  </args>
+               </payloadFactory>
+               <property name="SOAPAction"
+                         value="urn:deleteNinewells"
+                         scope="transport"
+                         type="STRING"/>
+               <header name="Action" scope="default" value="urn:deleteNinewells"/>
+               <property name="messageType"
+                         value="application/xml"
+                         scope="axis2"
+                         type="STRING"/>
+               <send>
+                  <endpoint>
+                     <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                              format="soap11"/>
+                  </endpoint>
+               </send>
+            </case>
+            <case regex="^(.*(POST)).*$">
+               <payloadFactory media-type="xml">
+                  <format>
+                     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                       xmlns:xsd="http://dto.service.sample.ninewells.com/xsd"
+                                       xmlns:ser="http://service.sample.ninewells.com">
+                        <soapenv:Header>
+                           <abc>2611</abc>
+                        </soapenv:Header>
+                        <soapenv:Body>
+                           <ser:postNinewells>
+                              <ser:patient>
+                                 <xsd:insurer>
+                                    <xsd:insurerEmail>?</xsd:insurerEmail>
+                                    <xsd:insurerName>?</xsd:insurerName>
+                                    <xsd:insurerPhone>?</xsd:insurerPhone>
+                                 </xsd:insurer>
+                                 <xsd:medical>
+                                    <xsd:condition>?</xsd:condition>
+                                    <xsd:treatment>?</xsd:treatment>
+                                 </xsd:medical>
+                                 <xsd:parentGuardian>
+                                    <xsd:guardianEmail>?</xsd:guardianEmail>
+                                    <xsd:guardianName>?</xsd:guardianName>
+                                    <xsd:guardianPhone>?</xsd:guardianPhone>
+                                 </xsd:parentGuardian>
+                                 <xsd:patientContact>
+                                    <xsd:address>?</xsd:address>
+                                    <xsd:email>?</xsd:email>
+                                    <xsd:phone>?</xsd:phone>
+                                 </xsd:patientContact>
+                                 <xsd:patientFullName>Pisii</xsd:patientFullName>
+                                 <xsd:patientId>1099</xsd:patientId>
+                                 <xsd:physician>
+                                    <xsd:physicianEmail>?</xsd:physicianEmail>
+                                    <xsd:physicianName>?</xsd:physicianName>
+                                    <xsd:physicianPhone>?</xsd:physicianPhone>
+                                 </xsd:physician>
+                              </ser:patient>
+                           </ser:postNinewells>
+                        </soapenv:Body>
+                     </soapenv:Envelope>
+                  </format>
+                  <args>
+                     <arg value="Pisii"/>
+                     <arg value="1099"/>
+                  </args>
+               </payloadFactory>
+               <property name="SOAPAction"
+                         value="urn:postNinewells"
+                         scope="transport"
+                         type="STRING"/>
+               <header name="Action" scope="default" value="urn:postNinewells"/>
+               <property name="messageType"
+                         value="application/xml"
+                         scope="axis2"
+                         type="STRING"/>
+               <send>
+                  <endpoint>
+                     <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                              format="soap11"/>
+                  </endpoint>
+               </send>
+            </case>
+            <case regex="^(.*(PUT)).*$">
+               <payloadFactory media-type="xml">
+                  <format>
+                     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                       xmlns:xsd="http://dto.service.sample.ninewells.com/xsd"
+                                       xmlns:ser="http://service.sample.ninewells.com">
+                        <soapenv:Header>
+                           <abc>2611</abc>
+                        </soapenv:Header>
+                        <soapenv:Body>
+                           <ser:putNinewells>
+                              <ser:patient>
+                                 <xsd:insurer>
+                                    <xsd:insurerEmail>?</xsd:insurerEmail>
+                                    <xsd:insurerName>?</xsd:insurerName>
+                                    <xsd:insurerPhone>?</xsd:insurerPhone>
+                                 </xsd:insurer>
+                                 <xsd:medical>
+                                    <xsd:condition>?</xsd:condition>
+                                    <xsd:treatment>?</xsd:treatment>
+                                 </xsd:medical>
+                                 <xsd:parentGuardian>
+                                    <xsd:guardianEmail>?</xsd:guardianEmail>
+                                    <xsd:guardianName>?</xsd:guardianName>
+                                    <xsd:guardianPhone>?</xsd:guardianPhone>
+                                 </xsd:parentGuardian>
+                                 <xsd:patientContact>
+                                    <xsd:address>?</xsd:address>
+                                    <xsd:email>?</xsd:email>
+                                    <xsd:phone>?</xsd:phone>
+                                 </xsd:patientContact>
+                                 <xsd:patientFullName>Piriyasivalinga</xsd:patientFullName>
+                                 <xsd:patientId>1099</xsd:patientId>
+                                 <xsd:physician>
+                                    <xsd:physicianEmail>?</xsd:physicianEmail>
+                                    <xsd:physicianName>?</xsd:physicianName>
+                                    <xsd:physicianPhone>?</xsd:physicianPhone>
+                                 </xsd:physician>
+                              </ser:patient>
+                           </ser:putNinewells>
+                        </soapenv:Body>
+                     </soapenv:Envelope>
+                  </format>
+                  <args>
+                     <arg value="Pisii"/>
+                     <arg value="1099"/>
+                  </args>
+               </payloadFactory>
+               <property name="SOAPAction"
+                         value="urn:putNinewells"
+                         scope="transport"
+                         type="STRING"/>
+               <header name="Action" scope="default" value="urn:putNinewells"/>
+               <property name="messageType"
+                         value="application/xml"
+                         scope="axis2"
+                         type="STRING"/>
+               <send>
+                  <endpoint>
+                     <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                              format="soap11"/>
+                  </endpoint>
+               </send>
+            </case>
+            <default/>
+         </switch>
+      </inSequence>
+      <outSequence>
+         <property name="messageType"
+                   value="application/json"
+                   scope="axis2"
+                   type="STRING"/>
+         <send/>
+      </outSequence>
+   </target>
+</proxy>
