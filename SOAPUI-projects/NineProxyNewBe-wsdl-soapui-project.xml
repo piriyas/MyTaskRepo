@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="2acf4ff6-e99b-4e85-a70e-5a15327dcb58" activeEnvironment="Default" name="NineProxyNewBe?wsdl" resourceRoot="" soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="b84a7389-9579-418c-9350-c8c349d5000c" wsaVersion="NONE" name="NineProxyNewBeSoap12Binding" type="wsdl" bindingName="{http://service.sample.ninewells.com}NineProxyNewBeSoap12Binding" soapVersion="1_2" anonymous="optional" definition="http://piriya-thinkpad-x1-carbon-5th:8286/services/NineProxyNewBe?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap12Endpoint</con:endpoint><con:endpoint>https://piriya-ThinkPad-X1-Carbon-5th:8249/services/NineProxyNewBe.NineProxyNewBeHttpsSoap12Endpoint</con:endpoint></con:endpoints><con:operation id="ecf86820-e348-45ca-8a2a-00ce3b1ac776" isOneWay="false" action="urn:deleteNinewells" name="deleteNinewells" bindingOperationName="deleteNinewells" type="One-Way" inputName="" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fad49995-135d-457c-a99b-4479027e2626" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap12Endpoint</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.sample.ninewells.com">
+   <soap:Header/>
+   <soap:Body>
+      <ser:deleteNinewells>
+         <!--Optional:-->
+         <ser:patientId>?</ser:patientId>
+      </ser:deleteNinewells>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:deleteNinewells"/></con:call></con:operation><con:operation id="e9e699f2-10b6-4b90-bfb4-d7b8c7eb4ad8" isOneWay="false" action="urn:postNinewells" name="postNinewells" bindingOperationName="postNinewells" type="One-Way" inputName="" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f18f5a53-1a25-4e88-999e-eb10c53b8663" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap12Endpoint</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.sample.ninewells.com" xmlns:xsd="http://dto.service.sample.ninewells.com/xsd">
+   <soap:Header/>
+   <soap:Body>
+      <ser:postNinewells>
+         <!--Optional:-->
+         <ser:patient>
+            <!--Optional:-->
+            <xsd:insurer>
+               <!--Optional:-->
+               <xsd:insurerEmail>?</xsd:insurerEmail>
+               <!--Optional:-->
+               <xsd:insurerName>?</xsd:insurerName>
+               <!--Optional:-->
+               <xsd:insurerPhone>?</xsd:insurerPhone>
+            </xsd:insurer>
+            <!--Optional:-->
+            <xsd:medical>
+               <!--Optional:-->
+               <xsd:condition>?</xsd:condition>
+               <!--Optional:-->
+               <xsd:treatment>?</xsd:treatment>
+            </xsd:medical>
+            <!--Optional:-->
+            <xsd:parentGuardian>
+               <!--Optional:-->
+               <xsd:guardianEmail>?</xsd:guardianEmail>
+               <!--Optional:-->
+               <xsd:guardianName>?</xsd:guardianName>
+               <!--Optional:-->
+               <xsd:guardianPhone>?</xsd:guardianPhone>
+            </xsd:parentGuardian>
+            <!--Optional:-->
+            <xsd:patientContact>
+               <!--Optional:-->
+               <xsd:address>?</xsd:address>
+               <!--Optional:-->
+               <xsd:email>?</xsd:email>
+               <!--Optional:-->
+               <xsd:phone>?</xsd:phone>
+            </xsd:patientContact>
+            <!--Optional:-->
+            <xsd:patientFullName>?</xsd:patientFullName>
+            <!--Optional:-->
+            <xsd:patientId>?</xsd:patientId>
+            <!--Optional:-->
+            <xsd:physician>
+               <!--Optional:-->
+               <xsd:physicianEmail>?</xsd:physicianEmail>
+               <!--Optional:-->
+               <xsd:physicianName>?</xsd:physicianName>
+               <!--Optional:-->
+               <xsd:physicianPhone>?</xsd:physicianPhone>
+            </xsd:physician>
+         </ser:patient>
+      </ser:postNinewells>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:postNinewells"/></con:call></con:operation><con:operation id="6104830b-7ae4-43ae-947d-d00cfaba4f3f" isOneWay="false" action="urn:putNinewells" name="putNinewells" bindingOperationName="putNinewells" type="One-Way" inputName="" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="be4c4a6e-0306-4d6f-a6be-3ee300dfc4b4" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap12Endpoint</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.sample.ninewells.com" xmlns:xsd="http://dto.service.sample.ninewells.com/xsd">
+   <soap:Header/>
+   <soap:Body>
+      <ser:putNinewells>
+         <!--Optional:-->
+         <ser:patient>
+            <!--Optional:-->
+            <xsd:insurer>
+               <!--Optional:-->
+               <xsd:insurerEmail>?</xsd:insurerEmail>
+               <!--Optional:-->
+               <xsd:insurerName>?</xsd:insurerName>
+               <!--Optional:-->
+               <xsd:insurerPhone>?</xsd:insurerPhone>
+            </xsd:insurer>
+            <!--Optional:-->
+            <xsd:medical>
+               <!--Optional:-->
+               <xsd:condition>?</xsd:condition>
+               <!--Optional:-->
+               <xsd:treatment>?</xsd:treatment>
+            </xsd:medical>
+            <!--Optional:-->
+            <xsd:parentGuardian>
+               <!--Optional:-->
+               <xsd:guardianEmail>?</xsd:guardianEmail>
+               <!--Optional:-->
+               <xsd:guardianName>?</xsd:guardianName>
+               <!--Optional:-->
+               <xsd:guardianPhone>?</xsd:guardianPhone>
+            </xsd:parentGuardian>
+            <!--Optional:-->
+            <xsd:patientContact>
+               <!--Optional:-->
+               <xsd:address>?</xsd:address>
+               <!--Optional:-->
+               <xsd:email>?</xsd:email>
+               <!--Optional:-->
+               <xsd:phone>?</xsd:phone>
+            </xsd:patientContact>
+            <!--Optional:-->
+            <xsd:patientFullName>?</xsd:patientFullName>
+            <!--Optional:-->
+            <xsd:patientId>?</xsd:patientId>
+            <!--Optional:-->
+            <xsd:physician>
+               <!--Optional:-->
+               <xsd:physicianEmail>?</xsd:physicianEmail>
+               <!--Optional:-->
+               <xsd:physicianName>?</xsd:physicianName>
+               <!--Optional:-->
+               <xsd:physicianPhone>?</xsd:physicianPhone>
+            </xsd:physician>
+         </ser:patient>
+      </ser:putNinewells>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:putNinewells"/></con:call></con:operation><con:operation id="a152983f-8f03-4cd0-a43b-7b3ded727c87" isOneWay="false" action="urn:readNinewells" name="readNinewells" bindingOperationName="readNinewells" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d7ec3075-34d1-4266-9b1c-75b159335280" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap12Endpoint</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.sample.ninewells.com">
+   <soap:Header/>
+   <soap:Body>
+      <ser:readNinewells>
+         <!--Optional:-->
+         <ser:patientId>?</ser:patientId>
+      </ser:readNinewells>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:readNinewells"/></con:call></con:operation><con:operation id="b50a7b9e-5837-4355-87a4-6b0ac226fed5" isOneWay="false" action="urn:readRecordNinewells" name="readRecordNinewells" bindingOperationName="readRecordNinewells" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8fcc5d7a-a472-474d-9712-fcf22cdac47b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap12Endpoint</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ser="http://service.sample.ninewells.com">
+   <soap:Header/>
+   <soap:Body>
+      <ser:readRecordNinewells>
+         <!--Optional:-->
+         <ser:patientId>?</ser:patientId>
+      </ser:readRecordNinewells>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:readRecordNinewells"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="6b382580-6daa-4308-8ec7-07864ac64caf" wsaVersion="NONE" name="NineProxyNewBeSoap11Binding" type="wsdl" bindingName="{http://service.sample.ninewells.com}NineProxyNewBeSoap11Binding" soapVersion="1_1" anonymous="optional" definition="http://piriya-thinkpad-x1-carbon-5th:8286/services/NineProxyNewBe?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://piriya-thinkpad-x1-carbon-5th:8286/services/NineProxyNewBe?wsdl"><con:part><con:url>http://piriya-thinkpad-x1-carbon-5th:8286/services/NineProxyNewBe?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://service.sample.ninewells.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://service.sample.ninewells.com" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ax215="http://dto.service.sample.ninewells.com/xsd" xmlns:ax213="http://service.sample.ninewells.com/xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>NinewellsPatientService</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dto.service.sample.ninewells.com/xsd">
+      <xs:complexType name="Patient">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="insurer" nillable="true" type="ax215:Insurer"/>
+          <xs:element minOccurs="0" name="medical" nillable="true" type="ax215:Medical"/>
+          <xs:element minOccurs="0" name="parentGuardian" nillable="true" type="ax215:ParentGuardian"/>
+          <xs:element minOccurs="0" name="patientContact" nillable="true" type="ax215:PatientContact"/>
+          <xs:element minOccurs="0" name="patientFullName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="patientId" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="physician" nillable="true" type="ax215:Physician"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Insurer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="insurerEmail" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="insurerName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="insurerPhone" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Medical">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="condition" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="treatment" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ParentGuardian">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="guardianEmail" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="guardianName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="guardianPhone" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PatientContact">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="address" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="email" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="phone" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Physician">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="physicianEmail" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="physicianName" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="physicianPhone" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.sample.ninewells.com/xsd">
+      <xs:complexType name="NinewellsException">
+        <xs:sequence/>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service.sample.ninewells.com" xmlns:ax214="http://service.sample.ninewells.com/xsd" xmlns:ax216="http://dto.service.sample.ninewells.com/xsd">
+      <xs:import namespace="http://service.sample.ninewells.com/xsd"/>
+      <xs:import namespace="http://dto.service.sample.ninewells.com/xsd"/>
+      <xs:element name="NinewellsPatientServiceNinewellsException">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="NinewellsException" nillable="true" type="ax214:NinewellsException"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="readNinewells">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patientId" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="readNinewellsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax216:Patient"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="postNinewells">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patient" nillable="true" type="ax216:Patient"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="readRecordNinewells">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patientId" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="readRecordNinewellsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax216:Patient"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="putNinewells">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patient" nillable="true" type="ax216:Patient"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteNinewells">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="patientId" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="deleteNinewellsRequest">
+    <wsdl:part name="parameters" element="ns:deleteNinewells"/>
+  </wsdl:message>
+  <wsdl:message name="NinewellsPatientServiceNinewellsException">
+    <wsdl:part name="parameters" element="ns:NinewellsPatientServiceNinewellsException"/>
+  </wsdl:message>
+  <wsdl:message name="readRecordNinewellsRequest">
+    <wsdl:part name="parameters" element="ns:readRecordNinewells"/>
+  </wsdl:message>
+  <wsdl:message name="readRecordNinewellsResponse">
+    <wsdl:part name="parameters" element="ns:readRecordNinewellsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="putNinewellsRequest">
+    <wsdl:part name="parameters" element="ns:putNinewells"/>
+  </wsdl:message>
+  <wsdl:message name="postNinewellsRequest">
+    <wsdl:part name="parameters" element="ns:postNinewells"/>
+  </wsdl:message>
+  <wsdl:message name="readNinewellsRequest">
+    <wsdl:part name="parameters" element="ns:readNinewells"/>
+  </wsdl:message>
+  <wsdl:message name="readNinewellsResponse">
+    <wsdl:part name="parameters" element="ns:readNinewellsResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="NineProxyNewBePortType">
+    <wsdl:operation name="deleteNinewells">
+      <wsdl:input message="ns:deleteNinewellsRequest" wsaw:Action="urn:deleteNinewells"/>
+      <wsdl:fault message="ns:NinewellsPatientServiceNinewellsException" name="NinewellsPatientServiceNinewellsException" wsaw:Action="urn:deleteNinewellsNinewellsPatientServiceNinewellsException"/>
+    </wsdl:operation>
+    <wsdl:operation name="readRecordNinewells">
+      <wsdl:input message="ns:readRecordNinewellsRequest" wsaw:Action="urn:readRecordNinewells"/>
+      <wsdl:output message="ns:readRecordNinewellsResponse" wsaw:Action="urn:readRecordNinewellsResponse"/>
+      <wsdl:fault message="ns:NinewellsPatientServiceNinewellsException" name="NinewellsPatientServiceNinewellsException" wsaw:Action="urn:readRecordNinewellsNinewellsPatientServiceNinewellsException"/>
+    </wsdl:operation>
+    <wsdl:operation name="putNinewells">
+      <wsdl:input message="ns:putNinewellsRequest" wsaw:Action="urn:putNinewells"/>
+      <wsdl:fault message="ns:NinewellsPatientServiceNinewellsException" name="NinewellsPatientServiceNinewellsException" wsaw:Action="urn:putNinewellsNinewellsPatientServiceNinewellsException"/>
+    </wsdl:operation>
+    <wsdl:operation name="postNinewells">
+      <wsdl:input message="ns:postNinewellsRequest" wsaw:Action="urn:postNinewells"/>
+      <wsdl:fault message="ns:NinewellsPatientServiceNinewellsException" name="NinewellsPatientServiceNinewellsException" wsaw:Action="urn:postNinewellsNinewellsPatientServiceNinewellsException"/>
+    </wsdl:operation>
+    <wsdl:operation name="readNinewells">
+      <wsdl:input message="ns:readNinewellsRequest" wsaw:Action="urn:readNinewells"/>
+      <wsdl:output message="ns:readNinewellsResponse" wsaw:Action="urn:readNinewellsResponse"/>
+      <wsdl:fault message="ns:NinewellsPatientServiceNinewellsException" name="NinewellsPatientServiceNinewellsException" wsaw:Action="urn:readNinewellsNinewellsPatientServiceNinewellsException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NineProxyNewBeSoap11Binding" type="ns:NineProxyNewBePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="deleteNinewells">
+      <soap:operation soapAction="urn:deleteNinewells" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:fault name="NinewellsPatientServiceNinewellsException">
+        <soap:fault use="literal" name="NinewellsPatientServiceNinewellsException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="readRecordNinewells">
+      <soap:operation soapAction="urn:readRecordNinewells" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NinewellsPatientServiceNinewellsException">
+        <soap:fault use="literal" name="NinewellsPatientServiceNinewellsException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="putNinewells">
+      <soap:operation soapAction="urn:putNinewells" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:fault name="NinewellsPatientServiceNinewellsException">
+        <soap:fault use="literal" name="NinewellsPatientServiceNinewellsException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="postNinewells">
+      <soap:operation soapAction="urn:postNinewells" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:fault name="NinewellsPatientServiceNinewellsException">
+        <soap:fault use="literal" name="NinewellsPatientServiceNinewellsException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="readNinewells">
+      <soap:operation soapAction="urn:readNinewells" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NinewellsPatientServiceNinewellsException">
+        <soap:fault use="literal" name="NinewellsPatientServiceNinewellsException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NineProxyNewBeSoap12Binding" type="ns:NineProxyNewBePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="deleteNinewells">
+      <soap12:operation soapAction="urn:deleteNinewells" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:fault name="NinewellsPatientServiceNinewellsException">
+        <soap12:fault use="literal" name="NinewellsPatientServiceNinewellsException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="readRecordNinewells">
+      <soap12:operation soapAction="urn:readRecordNinewells" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NinewellsPatientServiceNinewellsException">
+        <soap12:fault use="literal" name="NinewellsPatientServiceNinewellsException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="putNinewells">
+      <soap12:operation soapAction="urn:putNinewells" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:fault name="NinewellsPatientServiceNinewellsException">
+        <soap12:fault use="literal" name="NinewellsPatientServiceNinewellsException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="postNinewells">
+      <soap12:operation soapAction="urn:postNinewells" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:fault name="NinewellsPatientServiceNinewellsException">
+        <soap12:fault use="literal" name="NinewellsPatientServiceNinewellsException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="readNinewells">
+      <soap12:operation soapAction="urn:readNinewells" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="NinewellsPatientServiceNinewellsException">
+        <soap12:fault use="literal" name="NinewellsPatientServiceNinewellsException"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NineProxyNewBeHttpBinding" type="ns:NineProxyNewBePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="deleteNinewells">
+      <http:operation location="deleteNinewells"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="readRecordNinewells">
+      <http:operation location="readRecordNinewells"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="putNinewells">
+      <http:operation location="putNinewells"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="postNinewells">
+      <http:operation location="postNinewells"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="readNinewells">
+      <http:operation location="readNinewells"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NineProxyNewBe">
+    <wsdl:port name="NineProxyNewBeHttpSoap11Endpoint" binding="ns:NineProxyNewBeSoap11Binding">
+      <soap:address location="http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="NineProxyNewBeHttpsSoap11Endpoint" binding="ns:NineProxyNewBeSoap11Binding">
+      <soap:address location="https://piriya-ThinkPad-X1-Carbon-5th:8249/services/NineProxyNewBe.NineProxyNewBeHttpsSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="NineProxyNewBeHttpSoap12Endpoint" binding="ns:NineProxyNewBeSoap12Binding">
+      <soap12:address location="http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="NineProxyNewBeHttpsSoap12Endpoint" binding="ns:NineProxyNewBeSoap12Binding">
+      <soap12:address location="https://piriya-ThinkPad-X1-Carbon-5th:8249/services/NineProxyNewBe.NineProxyNewBeHttpsSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="NineProxyNewBeHttpEndpoint" binding="ns:NineProxyNewBeHttpBinding">
+      <http:address location="http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpEndpoint"/>
+    </wsdl:port>
+    <wsdl:port name="NineProxyNewBeHttpsEndpoint" binding="ns:NineProxyNewBeHttpBinding">
+      <http:address location="https://piriya-ThinkPad-X1-Carbon-5th:8249/services/NineProxyNewBe.NineProxyNewBeHttpsEndpoint"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap11Endpoint</con:endpoint><con:endpoint>https://piriya-ThinkPad-X1-Carbon-5th:8249/services/NineProxyNewBe.NineProxyNewBeHttpsSoap11Endpoint</con:endpoint></con:endpoints><con:operation id="addc0d51-e937-4e37-a2c7-4a3bcf9b93b0" isOneWay="false" action="urn:deleteNinewells" name="deleteNinewells" bindingOperationName="deleteNinewells" type="One-Way" inputName="" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="92817afe-c7fe-4ba1-ba17-b98b7da4595a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap11Endpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.sample.ninewells.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:deleteNinewells>
+         <!--Optional:-->
+         <ser:patientId>?</ser:patientId>
+      </ser:deleteNinewells>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:deleteNinewells"/></con:call></con:operation><con:operation id="784b2d97-e6cf-43c5-8aa1-b03b326aed8a" isOneWay="false" action="urn:postNinewells" name="postNinewells" bindingOperationName="postNinewells" type="One-Way" inputName="" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="054b6b15-92de-44a1-82e7-76a2ad6ceafd" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap11Endpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.sample.ninewells.com" xmlns:xsd="http://dto.service.sample.ninewells.com/xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:postNinewells>
+         <!--Optional:-->
+         <ser:patient>
+            <!--Optional:-->
+            <xsd:insurer>
+               <!--Optional:-->
+               <xsd:insurerEmail>?</xsd:insurerEmail>
+               <!--Optional:-->
+               <xsd:insurerName>?</xsd:insurerName>
+               <!--Optional:-->
+               <xsd:insurerPhone>?</xsd:insurerPhone>
+            </xsd:insurer>
+            <!--Optional:-->
+            <xsd:medical>
+               <!--Optional:-->
+               <xsd:condition>?</xsd:condition>
+               <!--Optional:-->
+               <xsd:treatment>?</xsd:treatment>
+            </xsd:medical>
+            <!--Optional:-->
+            <xsd:parentGuardian>
+               <!--Optional:-->
+               <xsd:guardianEmail>?</xsd:guardianEmail>
+               <!--Optional:-->
+               <xsd:guardianName>?</xsd:guardianName>
+               <!--Optional:-->
+               <xsd:guardianPhone>?</xsd:guardianPhone>
+            </xsd:parentGuardian>
+            <!--Optional:-->
+            <xsd:patientContact>
+               <!--Optional:-->
+               <xsd:address>?</xsd:address>
+               <!--Optional:-->
+               <xsd:email>?</xsd:email>
+               <!--Optional:-->
+               <xsd:phone>?</xsd:phone>
+            </xsd:patientContact>
+            <!--Optional:-->
+            <xsd:patientFullName>?</xsd:patientFullName>
+            <!--Optional:-->
+            <xsd:patientId>?</xsd:patientId>
+            <!--Optional:-->
+            <xsd:physician>
+               <!--Optional:-->
+               <xsd:physicianEmail>?</xsd:physicianEmail>
+               <!--Optional:-->
+               <xsd:physicianName>?</xsd:physicianName>
+               <!--Optional:-->
+               <xsd:physicianPhone>?</xsd:physicianPhone>
+            </xsd:physician>
+         </ser:patient>
+      </ser:postNinewells>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:postNinewells"/></con:call></con:operation><con:operation id="1aa5d9b2-ad66-4c94-8463-16b927fd3e42" isOneWay="false" action="urn:putNinewells" name="putNinewells" bindingOperationName="putNinewells" type="One-Way" inputName="" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cfa4a20a-9e05-4815-a1bd-e708e3c0ebcf" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap11Endpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.sample.ninewells.com" xmlns:xsd="http://dto.service.sample.ninewells.com/xsd">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:putNinewells>
+         <!--Optional:-->
+         <ser:patient>
+            <!--Optional:-->
+            <xsd:insurer>
+               <!--Optional:-->
+               <xsd:insurerEmail>?</xsd:insurerEmail>
+               <!--Optional:-->
+               <xsd:insurerName>?</xsd:insurerName>
+               <!--Optional:-->
+               <xsd:insurerPhone>?</xsd:insurerPhone>
+            </xsd:insurer>
+            <!--Optional:-->
+            <xsd:medical>
+               <!--Optional:-->
+               <xsd:condition>?</xsd:condition>
+               <!--Optional:-->
+               <xsd:treatment>?</xsd:treatment>
+            </xsd:medical>
+            <!--Optional:-->
+            <xsd:parentGuardian>
+               <!--Optional:-->
+               <xsd:guardianEmail>?</xsd:guardianEmail>
+               <!--Optional:-->
+               <xsd:guardianName>?</xsd:guardianName>
+               <!--Optional:-->
+               <xsd:guardianPhone>?</xsd:guardianPhone>
+            </xsd:parentGuardian>
+            <!--Optional:-->
+            <xsd:patientContact>
+               <!--Optional:-->
+               <xsd:address>?</xsd:address>
+               <!--Optional:-->
+               <xsd:email>?</xsd:email>
+               <!--Optional:-->
+               <xsd:phone>?</xsd:phone>
+            </xsd:patientContact>
+            <!--Optional:-->
+            <xsd:patientFullName>?</xsd:patientFullName>
+            <!--Optional:-->
+            <xsd:patientId>?</xsd:patientId>
+            <!--Optional:-->
+            <xsd:physician>
+               <!--Optional:-->
+               <xsd:physicianEmail>?</xsd:physicianEmail>
+               <!--Optional:-->
+               <xsd:physicianName>?</xsd:physicianName>
+               <!--Optional:-->
+               <xsd:physicianPhone>?</xsd:physicianPhone>
+            </xsd:physician>
+         </ser:patient>
+      </ser:putNinewells>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:putNinewells"/></con:call></con:operation><con:operation id="668403dd-ab70-494d-8382-11d3cabdc26d" isOneWay="false" action="urn:readNinewells" name="readNinewells" bindingOperationName="readNinewells" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7a0df116-1707-4f20-a8fb-2db528578e31" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap11Endpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.sample.ninewells.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:readNinewells>
+         <!--Optional:-->
+         <ser:patientId>1012</ser:patientId>
+      </ser:readNinewells>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:readNinewells"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="596e174e-a557-4124-9f9b-bf5f25027180" isOneWay="false" action="urn:readRecordNinewells" name="readRecordNinewells" bindingOperationName="readRecordNinewells" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="723b5a4d-5c7e-4e43-9cc7-e265687ff4e0" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://piriya-ThinkPad-X1-Carbon-5th:8286/services/NineProxyNewBe.NineProxyNewBeHttpSoap11Endpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://service.sample.ninewells.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ser:readRecordNinewells>
+         <!--Optional:-->
+         <ser:patientId>?</ser:patientId>
+      </ser:readRecordNinewells>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:readRecordNinewells"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
