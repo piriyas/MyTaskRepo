@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="newproxy1.2Update1.4"
+       transports="http https"
+       startOnLoad="true">
+   <description/>
+   <target>
+      <inSequence>
+         <header name="Authorization"
+                 scope="transport"
+                 value="Basic cGlyaXlhOnBpcml5YTEyMw=="/>
+         <log>
+            <property name="USER_ROLE" expression="get-property('USER_ROLE')"/>
+         </log>
+         <class name="org.wso2.sample.JWTRoleReader">
+            <property name="JWT_JSON_Array" value="literal"/>
+         </class>
+         <log>
+            <property name="httpmethod === " expression="$axis2:HTTP_METHOD"/>
+         </log>
+         <switch source="$axis2:HTTP_METHOD">
+            <case regex="^(.*(GET)).*$">
+               <payloadFactory media-type="xml">
+                  <format>
+                     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                       xmlns:ser="http://service.sample.ninewells.com">
+                        <soapenv:Header>
+                           <abc>2611</abc>
+                        </soapenv:Header>
+                        <soapenv:Body>
+                           <ser:readNinewells>
+                              <ser:patientId>$1</ser:patientId>
+                           </ser:readNinewells>
+                        </soapenv:Body>
+                     </soapenv:Envelope>
+                  </format>
+                  <args>
+                     <arg xmlns:ns="http://org.apache.synapse/xsd"
+                          evaluator="xml"
+                          expression="$url:patientId"/>
+                  </args>
+               </payloadFactory>
+               <log>
+                  <property name="iiiiiiiiiii" value="vvvvvvvvvvvvvvv"/>
+               </log>
+               <property name="SOAPAction"
+                         value="urn:readNinewells"
+                         scope="transport"
+                         type="STRING"/>
+               <header name="Action" scope="default" value="urn:readNinewells"/>
+               <property name="messageType"
+                         value="application/soap+xml"
+                         scope="axis2"
+                         type="STRING"/>
+               <log>
+                  <property name="mmmmmmmmmmmmmm" value="out the sequence"/>
+               </log>
+               <send>
+                  <endpoint>
+                     <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                              format="soap11"/>
+                  </endpoint>
+               </send>
+            </case>
+            <case regex="^(.*(DELETE)).*$">
+               <payloadFactory media-type="xml">
+                  <format>
+                     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                       xmlns:ser="http://service.sample.ninewells.com">
+                        <soapenv:Header>
+                           <abc>2611</abc>
+                        </soapenv:Header>
+                        <soapenv:Body>
+                           <ser:deleteNinewells>
+                              <ser:patientId>$1</ser:patientId>
+                           </ser:deleteNinewells>
+                        </soapenv:Body>
+                     </soapenv:Envelope>
+                  </format>
+                  <args>
+                     <arg xmlns:ns="http://org.apache.synapse/xsd"
+                          evaluator="xml"
+                          expression="$url:patientId"/>
+                  </args>
+               </payloadFactory>
+               <property name="SOAPAction"
+                         value="urn:deleteNinewells"
+                         scope="transport"
+                         type="STRING"/>
+               <header name="Action" scope="default" value="urn:deleteNinewells"/>
+               <property name="messageType"
+                         value="application/xml"
+                         scope="axis2"
+                         type="STRING"/>
+               <send>
+                  <endpoint>
+                     <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                              format="soap11"/>
+                  </endpoint>
+               </send>
+            </case>
+            <case regex="^(.*(POST)).*$">
+               <payloadFactory media-type="xml">
+                  <format>
+                     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                       xmlns:xsd="http://dto.service.sample.ninewells.com/xsd"
+                                       xmlns:ser="http://service.sample.ninewells.com">
+                        <soapenv:Header>
+                           <abc>2611</abc>
+                        </soapenv:Header>
+                        <soapenv:Body>
+                           <ser:postNinewells>
+                              <ser:patient>
+                                 <xsd:insurer>
+                                    <xsd:insurerEmail>$1</xsd:insurerEmail>
+                                    <xsd:insurerName>$2</xsd:insurerName>
+                                    <xsd:insurerPhone>$3</xsd:insurerPhone>
+                                 </xsd:insurer>
+                                 <xsd:medical>
+                                    <xsd:condition>$4</xsd:condition>
+                                    <xsd:treatment>$5</xsd:treatment>
+                                 </xsd:medical>
+                                 <xsd:parentGuardian>
+                                    <xsd:guardianEmail>$6</xsd:guardianEmail>
+                                    <xsd:guardianName>$7</xsd:guardianName>
+                                    <xsd:guardianPhone>$8</xsd:guardianPhone>
+                                 </xsd:parentGuardian>
+                                 <xsd:patientContact>
+                                    <xsd:address>$9</xsd:address>
+                                    <xsd:email>$10</xsd:email>
+                                    <xsd:phone>$11</xsd:phone>
+                                 </xsd:patientContact>
+                                 <xsd:patientFullName>$12</xsd:patientFullName>
+                                 <xsd:patientId>$13</xsd:patientId>
+                                 <xsd:physician>
+                                    <xsd:physicianEmail>$14</xsd:physicianEmail>
+                                    <xsd:physicianName>$15</xsd:physicianName>
+                                    <xsd:physicianPhone>$16</xsd:physicianPhone>
+                                 </xsd:physician>
+                              </ser:patient>
+                           </ser:postNinewells>
+                        </soapenv:Body>
+                     </soapenv:Envelope>
+                  </format>
+                  <args>
+                     <arg evaluator="json" expression="$.patient.insurer.insurerEmail"/>
+                     <arg evaluator="json" expression="$.patient.insurer.insurerName"/>
+                     <arg evaluator="json" expression="$.patient.insurer.insurerPhone"/>
+                     <arg evaluator="json" expression="$.patient.medical.condition"/>
+                     <arg evaluator="json" expression="$.patient.medical.treatment"/>
+                     <arg evaluator="json" expression="$.patient.parentGuardian.guardianEmail"/>
+                     <arg evaluator="json" expression="$.patient.parentGuardian.guardianName"/>
+                     <arg evaluator="json" expression="$.patient.parentGuardian.guardianPhone"/>
+                     <arg evaluator="json" expression="$.patient.patientContact.address"/>
+                     <arg evaluator="json" expression="$.patient.patientContact.email"/>
+                     <arg evaluator="json" expression="$.patient.patientContact.phone"/>
+                     <arg evaluator="json" expression="$.patient.patientFullName"/>
+                     <arg evaluator="json" expression="$.patient.patientId"/>
+                     <arg evaluator="json" expression="$.patient.physician.physicianEmail"/>
+                     <arg evaluator="json" expression="$.patient.physician.physicianName"/>
+                     <arg evaluator="json" expression="$.patient.physician.physicianPhone"/>
+                  </args>
+               </payloadFactory>
+               <property name="SOAPAction"
+                         value="urn:postNinewells"
+                         scope="transport"
+                         type="STRING"/>
+               <header name="Action" scope="default" value="urn:postNinewells"/>
+               <property name="messageType"
+                         value="application/xml"
+                         scope="axis2"
+                         type="STRING"/>
+               <send>
+                  <endpoint>
+                     <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                              format="soap11"/>
+                  </endpoint>
+               </send>
+            </case>
+            <case regex="^(.*(PUT)).*$">
+               <payloadFactory media-type="xml">
+                  <format>
+                     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                                       xmlns:xsd="http://dto.service.sample.ninewells.com/xsd"
+                                       xmlns:ser="http://service.sample.ninewells.com">
+                        <soapenv:Header>
+                           <abc>2611</abc>
+                        </soapenv:Header>
+                        <soapenv:Body>
+                           <ser:putNinewells>
+                              <ser:patient>
+                                 <xsd:insurer>
+                                    <xsd:insurerEmail>$1</xsd:insurerEmail>
+                                    <xsd:insurerName>$2</xsd:insurerName>
+                                    <xsd:insurerPhone>$3</xsd:insurerPhone>
+                                 </xsd:insurer>
+                                 <xsd:medical>
+                                    <xsd:condition>$4</xsd:condition>
+                                    <xsd:treatment>$5</xsd:treatment>
+                                 </xsd:medical>
+                                 <xsd:parentGuardian>
+                                    <xsd:guardianEmail>$6</xsd:guardianEmail>
+                                    <xsd:guardianName>$7</xsd:guardianName>
+                                    <xsd:guardianPhone>$8</xsd:guardianPhone>
+                                 </xsd:parentGuardian>
+                                 <xsd:patientContact>
+                                    <xsd:address>$9</xsd:address>
+                                    <xsd:email>$10</xsd:email>
+                                    <xsd:phone>$11</xsd:phone>
+                                 </xsd:patientContact>
+                                 <xsd:patientFullName>$12</xsd:patientFullName>
+                                 <xsd:patientId>$13</xsd:patientId>
+                                 <xsd:physician>
+                                    <xsd:physicianEmail>$14</xsd:physicianEmail>
+                                    <xsd:physicianName>$15</xsd:physicianName>
+                                    <xsd:physicianPhone>$16</xsd:physicianPhone>
+                                 </xsd:physician>
+                              </ser:patient>
+                           </ser:putNinewells>
+                        </soapenv:Body>
+                     </soapenv:Envelope>
+                  </format>
+                  <args>
+                     <arg evaluator="json" expression="$.patient.insurer.insurerEmail"/>
+                     <arg evaluator="json" expression="$.patient.insurer.insurerName"/>
+                     <arg evaluator="json" expression="$.patient.insurer.insurerPhone"/>
+                     <arg evaluator="json" expression="$.patient.medical.condition"/>
+                     <arg evaluator="json" expression="$.patient.medical.treatment"/>
+                     <arg evaluator="json" expression="$.patient.parentGuardian.guardianEmail"/>
+                     <arg evaluator="json" expression="$.patient.parentGuardian.guardianName"/>
+                     <arg evaluator="json" expression="$.patient.parentGuardian.guardianPhone"/>
+                     <arg evaluator="json" expression="$.patient.patientContact.address"/>
+                     <arg evaluator="json" expression="$.patient.patientContact.email"/>
+                     <arg evaluator="json" expression="$.patient.patientContact.phone"/>
+                     <arg evaluator="json" expression="$.patient.patientFullName"/>
+                     <arg evaluator="json" expression="$.patient.patientId"/>
+                     <arg evaluator="json" expression="$.patient.physician.physicianEmail"/>
+                     <arg evaluator="json" expression="$.patient.physician.physicianName"/>
+                     <arg evaluator="json" expression="$.patient.physician.physicianPhone"/>
+                  </args>
+               </payloadFactory>
+               <property name="SOAPAction"
+                         value="urn:putNinewells"
+                         scope="transport"
+                         type="STRING"/>
+               <header name="Action" scope="default" value="urn:putNinewells"/>
+               <property name="messageType"
+                         value="application/xml"
+                         scope="axis2"
+                         type="STRING"/>
+               <send>
+                  <endpoint>
+                     <address uri="https://192.168.55.160:9443/services/NinewellsPatientService"
+                              format="soap11"/>
+                  </endpoint>
+               </send>
+            </case>
+            <default/>
+         </switch>
+      </inSequence>
+      <outSequence>
+         <switch source="$axis2:HTTP_SC">
+            <case regex="200">
+               <property name="messageType" value="application/json" scope="axis2"/>
+               <send/>
+            </case>
+            <case regex="202">
+               <payloadFactory media-type="json">
+                  <format>{
+			"Message":"Successfully completed"
+			}
+		</format>
+                  <args/>
+               </payloadFactory>
+               <send/>
+            </case>
+            <default>
+               <payloadFactory media-type="json">
+                  <format>{
+			"Message":"Error in the operation"
+			}
+		</format>
+                  <args/>
+               </payloadFactory>
+               <send/>
+            </default>
+         </switch>
+      </outSequence>
+   </target>
+</proxy>

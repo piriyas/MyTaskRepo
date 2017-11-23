@@ -5,6 +5,9 @@ Proxy service with all the methods and with parameter parsing - newproxy1.2Updat
 Proxy service with all the methods and without parameter parsing - newproxy1.2Update1.2.xml
 Proxy service for GET and DELETE methods and without parameter parsing - newproxy1.2Update.xml
 Proxy service with GET and DELETE methods with parameter parsing and with success JSON output - newproxy1.2.xml
+Proxy service with all the methods and with parameter parsing and with proper error messages - newproxy1.2Update1.4.xml
+Proxy service for the two GET methods using service chaining - newproxy1.2Update1.11.xml
+Proxy service for extracting the roles from the JWT token - newproxy1.2Update1.6.xml
 
 API in ESB with all the methods with parameter parsing - NinewellsPatientMgtAPI.xml
 
@@ -13,5 +16,9 @@ SOAPUI project to test the backend directly - Ninewells
 API in APIM with all CRUD operations having the API created in ESB as the end-point - admin--MyAPI_v1.0.0.xml
 API with all CRUD operations having the ESB proxy service as the end-point and with role based access to the resources - admin--RoleAPI_v1.0.0.xml
 API with parameter parsing - admin--ParamAPI_v1.0.0.xml
+API with Secured proxy as the end point - admin--NinewellsSecuredAPI_v1.0.0.xml
+API for JWT generation - admin--SampleJWTAPI_v1.0.0.xml
+API for proper response handling - admin--SampleResponseAPI_v1.0.0.xml
+API for Service chaining - admin--SeviceChainingAPI_v1.0.0.xml
 
 
