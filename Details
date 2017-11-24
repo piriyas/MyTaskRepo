@@ -8,6 +8,7 @@ Proxy service with GET and DELETE methods with parameter parsing and with succes
 Proxy service with all the methods and with parameter parsing and with proper error messages - newproxy1.2Update1.4.xml
 Proxy service for the two GET methods using service chaining - newproxy1.2Update1.11.xml
 Proxy service for extracting the roles from the JWT token - newproxy1.2Update1.6.xml
+All combined Proxy service without secured - NINEWELLSPROJECT.xml
 
 API in ESB with all the methods with parameter parsing - NinewellsPatientMgtAPI.xml
 
@@ -20,5 +21,6 @@ API with Secured proxy as the end point - admin--NinewellsSecuredAPI_v1.0.0.xml
 API for JWT generation - admin--SampleJWTAPI_v1.0.0.xml
 API for proper response handling - admin--SampleResponseAPI_v1.0.0.xml
 API for Service chaining - admin--SeviceChainingAPI_v1.0.0.xml
+All Combined API - admin--NinewellsProjectAPI_v1.0.0.xml
 
 
