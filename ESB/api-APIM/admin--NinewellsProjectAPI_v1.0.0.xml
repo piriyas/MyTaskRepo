@@ -8,6 +8,13 @@
              url-mapping="/readRecordNinewells/patientId"
              faultSequence="fault">
       <inSequence>
+         <property name="HTTP_METHOD_NEW" expression="get-property('axis2','HTTP_METHOD')"/>
+         <cache scope="per-host"
+                collector="false"
+                hashGenerator="org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator"
+                timeout="300">
+            <implementation type="memory" maxSize="500"/>
+         </cache>
          <property name="api.ut.backendRequestTime"
                    expression="get-property('SYSTEM_TIME')"/>
          <filter source="$ctx:AM_KEY_TYPE" regex="PRODUCTION">
@@ -27,6 +34,46 @@
       </inSequence>
       <outSequence>
          <class name="org.wso2.carbon.apimgt.gateway.handlers.analytics.APIMgtResponseHandler"/>
+         <log level="custom">
+            <property name="Inside the outsequence" value="Into the outsequence"/>
+            <property name="HTTP_SC1" expression="get-property('axis2','HTTP_SC')"/>
+         </log>
+         <property name="HTTP_SC" expression="get-property('axis2','HTTP_SC')"/>
+         <filter source="get-property('HTTP_METHOD_NEW')" regex="GET">
+            <then>
+               <filter source="$ctx:HTTP_SC" regex="404">
+                  <then>
+                     <log level="custom">
+                        <property name="Inside the outsequence"
+                                  value="It is a 404 response and not cached"/>
+                     </log>
+                  </then>
+                  <else>
+                     <filter source="$ctx:HTTP_SC" regex="500">
+                        <then>
+                           <log level="custom">
+                              <property name="Inside the outsequence"
+                                        value="It is a 500 response and not cached"/>
+                           </log>
+                        </then>
+                        <else>
+                           <log level="custom">
+                              <property name="Inside the outsequence"
+                                        value="It is a GET resource and the response is cached"/>
+                           </log>
+                           <cache scope="per-host" collector="true"/>
+                        </else>
+                     </filter>
+                  </else>
+               </filter>
+            </then>
+            <else>
+               <log level="custom">
+                  <property name="Inside the outsequence"
+                            value="It is not a GET resource and not cached"/>
+               </log>
+            </else>
+         </filter>
          <send/>
       </outSequence>
    </resource>
@@ -34,6 +81,13 @@
              url-mapping="/readNinewells/patientId"
              faultSequence="fault">
       <inSequence>
+         <property name="HTTP_METHOD_NEW" expression="get-property('axis2','HTTP_METHOD')"/>
+         <cache scope="per-host"
+                collector="false"
+                hashGenerator="org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator"
+                timeout="300">
+            <implementation type="memory" maxSize="500"/>
+         </cache>
          <property name="api.ut.backendRequestTime"
                    expression="get-property('SYSTEM_TIME')"/>
          <filter source="$ctx:AM_KEY_TYPE" regex="PRODUCTION">
@@ -53,6 +107,46 @@
       </inSequence>
       <outSequence>
          <class name="org.wso2.carbon.apimgt.gateway.handlers.analytics.APIMgtResponseHandler"/>
+         <log level="custom">
+            <property name="Inside the outsequence" value="Into the outsequence"/>
+            <property name="HTTP_SC1" expression="get-property('axis2','HTTP_SC')"/>
+         </log>
+         <property name="HTTP_SC" expression="get-property('axis2','HTTP_SC')"/>
+         <filter source="get-property('HTTP_METHOD_NEW')" regex="GET">
+            <then>
+               <filter source="$ctx:HTTP_SC" regex="404">
+                  <then>
+                     <log level="custom">
+                        <property name="Inside the outsequence"
+                                  value="It is a 404 response and not cached"/>
+                     </log>
+                  </then>
+                  <else>
+                     <filter source="$ctx:HTTP_SC" regex="500">
+                        <then>
+                           <log level="custom">
+                              <property name="Inside the outsequence"
+                                        value="It is a 500 response and not cached"/>
+                           </log>
+                        </then>
+                        <else>
+                           <log level="custom">
+                              <property name="Inside the outsequence"
+                                        value="It is a GET resource and the response is cached"/>
+                           </log>
+                           <cache scope="per-host" collector="true"/>
+                        </else>
+                     </filter>
+                  </else>
+               </filter>
+            </then>
+            <else>
+               <log level="custom">
+                  <property name="Inside the outsequence"
+                            value="It is not a GET resource and not cached"/>
+               </log>
+            </else>
+         </filter>
          <send/>
       </outSequence>
    </resource>
@@ -60,6 +154,13 @@
              url-mapping="/deleteNinewells/patientId"
              faultSequence="fault">
       <inSequence>
+         <property name="HTTP_METHOD_NEW" expression="get-property('axis2','HTTP_METHOD')"/>
+         <cache scope="per-host"
+                collector="false"
+                hashGenerator="org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator"
+                timeout="300">
+            <implementation type="memory" maxSize="500"/>
+         </cache>
          <property name="api.ut.backendRequestTime"
                    expression="get-property('SYSTEM_TIME')"/>
          <filter source="$ctx:AM_KEY_TYPE" regex="PRODUCTION">
@@ -79,6 +180,46 @@
       </inSequence>
       <outSequence>
          <class name="org.wso2.carbon.apimgt.gateway.handlers.analytics.APIMgtResponseHandler"/>
+         <log level="custom">
+            <property name="Inside the outsequence" value="Into the outsequence"/>
+            <property name="HTTP_SC1" expression="get-property('axis2','HTTP_SC')"/>
+         </log>
+         <property name="HTTP_SC" expression="get-property('axis2','HTTP_SC')"/>
+         <filter source="get-property('HTTP_METHOD_NEW')" regex="GET">
+            <then>
+               <filter source="$ctx:HTTP_SC" regex="404">
+                  <then>
+                     <log level="custom">
+                        <property name="Inside the outsequence"
+                                  value="It is a 404 response and not cached"/>
+                     </log>
+                  </then>
+                  <else>
+                     <filter source="$ctx:HTTP_SC" regex="500">
+                        <then>
+                           <log level="custom">
+                              <property name="Inside the outsequence"
+                                        value="It is a 500 response and not cached"/>
+                           </log>
+                        </then>
+                        <else>
+                           <log level="custom">
+                              <property name="Inside the outsequence"
+                                        value="It is a GET resource and the response is cached"/>
+                           </log>
+                           <cache scope="per-host" collector="true"/>
+                        </else>
+                     </filter>
+                  </else>
+               </filter>
+            </then>
+            <else>
+               <log level="custom">
+                  <property name="Inside the outsequence"
+                            value="It is not a GET resource and not cached"/>
+               </log>
+            </else>
+         </filter>
          <send/>
       </outSequence>
    </resource>
@@ -86,6 +227,13 @@
              url-mapping="/postNinewells/patientId"
              faultSequence="fault">
       <inSequence>
+         <property name="HTTP_METHOD_NEW" expression="get-property('axis2','HTTP_METHOD')"/>
+         <cache scope="per-host"
+                collector="false"
+                hashGenerator="org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator"
+                timeout="300">
+            <implementation type="memory" maxSize="500"/>
+         </cache>
          <property name="api.ut.backendRequestTime"
                    expression="get-property('SYSTEM_TIME')"/>
          <filter source="$ctx:AM_KEY_TYPE" regex="PRODUCTION">
@@ -105,6 +253,46 @@
       </inSequence>
       <outSequence>
          <class name="org.wso2.carbon.apimgt.gateway.handlers.analytics.APIMgtResponseHandler"/>
+         <log level="custom">
+            <property name="Inside the outsequence" value="Into the outsequence"/>
+            <property name="HTTP_SC1" expression="get-property('axis2','HTTP_SC')"/>
+         </log>
+         <property name="HTTP_SC" expression="get-property('axis2','HTTP_SC')"/>
+         <filter source="get-property('HTTP_METHOD_NEW')" regex="GET">
+            <then>
+               <filter source="$ctx:HTTP_SC" regex="404">
+                  <then>
+                     <log level="custom">
+                        <property name="Inside the outsequence"
+                                  value="It is a 404 response and not cached"/>
+                     </log>
+                  </then>
+                  <else>
+                     <filter source="$ctx:HTTP_SC" regex="500">
+                        <then>
+                           <log level="custom">
+                              <property name="Inside the outsequence"
+                                        value="It is a 500 response and not cached"/>
+                           </log>
+                        </then>
+                        <else>
+                           <log level="custom">
+                              <property name="Inside the outsequence"
+                                        value="It is a GET resource and the response is cached"/>
+                           </log>
+                           <cache scope="per-host" collector="true"/>
+                        </else>
+                     </filter>
+                  </else>
+               </filter>
+            </then>
+            <else>
+               <log level="custom">
+                  <property name="Inside the outsequence"
+                            value="It is not a GET resource and not cached"/>
+               </log>
+            </else>
+         </filter>
          <send/>
       </outSequence>
    </resource>
@@ -112,6 +300,13 @@
              url-mapping="/putNinewells/patientId"
              faultSequence="fault">
       <inSequence>
+         <property name="HTTP_METHOD_NEW" expression="get-property('axis2','HTTP_METHOD')"/>
+         <cache scope="per-host"
+                collector="false"
+                hashGenerator="org.wso2.carbon.mediator.cache.digest.DOMHASHGenerator"
+                timeout="300">
+            <implementation type="memory" maxSize="500"/>
+         </cache>
          <property name="api.ut.backendRequestTime"
                    expression="get-property('SYSTEM_TIME')"/>
          <filter source="$ctx:AM_KEY_TYPE" regex="PRODUCTION">
@@ -131,6 +326,46 @@
       </inSequence>
       <outSequence>
          <class name="org.wso2.carbon.apimgt.gateway.handlers.analytics.APIMgtResponseHandler"/>
+         <log level="custom">
+            <property name="Inside the outsequence" value="Into the outsequence"/>
+            <property name="HTTP_SC1" expression="get-property('axis2','HTTP_SC')"/>
+         </log>
+         <property name="HTTP_SC" expression="get-property('axis2','HTTP_SC')"/>
+         <filter source="get-property('HTTP_METHOD_NEW')" regex="GET">
+            <then>
+               <filter source="$ctx:HTTP_SC" regex="404">
+                  <then>
+                     <log level="custom">
+                        <property name="Inside the outsequence"
+                                  value="It is a 404 response and not cached"/>
+                     </log>
+                  </then>
+                  <else>
+                     <filter source="$ctx:HTTP_SC" regex="500">
+                        <then>
+                           <log level="custom">
+                              <property name="Inside the outsequence"
+                                        value="It is a 500 response and not cached"/>
+                           </log>
+                        </then>
+                        <else>
+                           <log level="custom">
+                              <property name="Inside the outsequence"
+                                        value="It is a GET resource and the response is cached"/>
+                           </log>
+                           <cache scope="per-host" collector="true"/>
+                        </else>
+                     </filter>
+                  </else>
+               </filter>
+            </then>
+            <else>
+               <log level="custom">
+                  <property name="Inside the outsequence"
+                            value="It is not a GET resource and not cached"/>
+               </log>
+            </else>
+         </filter>
          <send/>
       </outSequence>
    </resource>
